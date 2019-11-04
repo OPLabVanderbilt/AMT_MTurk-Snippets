@@ -1,0 +1,92 @@
+<!-- For help on using this template, see the blog post: https://blog.mturk.com/editing-the-survey-link-project-template-in-the-ui-7c75285105fb#.py7towsdx --><!-- HIT template: SurveyLink-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="SurveyLink"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1">
+<div class="panel panel-primary">
+<div class="panel-heading"><strong>Online Test Instruction</strong></div>
+
+<div class="panel-body" id="instructionBody">
+<p>In this HIT, you will view two arrays of object images in sequence and then determine which array had more diverse objects. You will be given step-by-step instruction and few practices in the beginning. Then, you will do this task multiple times with occasional short breaks.</p>
+
+<p><strong style="font-size: 1.4em;">To be paid for this HIT, you need to keep trying</strong> even though you may find the task difficult in the beginning.</p>
+
+<p><strong style="font-size: 1.4em;">Make sure to leave this window open as you start the test. When you are finished, your test code will appear on THIS WINDOW (not on the test window).</strong> Please return to this page and submit the test code.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row" id="workContent">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<table class="table table-condensed table-bordered">
+	<colgroup>
+		<col class="col-xs-3 col-md-3" />
+		<col class="col-xs-9 col-md-9" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td><label>Test link:</label></td>
+			<td id="testLinkBody"><span style="color: #999;">The link will appear here once you accept this HIT.</span></td>
+		</tr>
+	</tbody>
+</table>
+<!-- End Content for Worker --><!-- Input from Worker -->
+
+<p id="codeInstruction" style="display: none;">&nbsp;</p>
+
+<div class="form-group"><label for="surveycode">Provide the test code here:</label> <input class="form-control" id="surveycode" name="surveycode" placeholder="e.g. 12345678" required="" type="text" /></div>
+<!-- End input from Worker --></div>
+</div>
+<!-- End Survey Link Layout --></section>
+<!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">/* CSS for breaking long words/urls */
+.dont-break-out {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+  // test settings
+  var showCodeAfter = 1 * 60 * 1000;  // after 1 min
+  var testUrl = 'https://testurl.com/test.html';
+  // get workerId & assignmentId
+  var urlParams = window.location.search.substring(1).split('&');
+  var workerId = '';
+  var assignmentId = '';
+  for (var p = 0; p < urlParams.length; p++) {
+    var pair = urlParams[p].split('=');
+    if (pair[0] == 'workerId') {
+      workerId = pair[1];
+      testUrl = testUrl + (testUrl.includes('?') ? '&' : '?') + 'workerId=' + workerId;
+    }
+    if (pair[0] == 'assignmentId') {
+      assignmentId = pair[1];
+      //testUrl = testUrl + (testUrl.includes('?') ? '&' : '?') + 'assignmentId=' + assignmentId;
+    }
+  }
+  // prepare test code
+  var codeChrs = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var codeText = '';
+  for (var c = 0; c < 8; c++) {
+    codeText += codeChrs.charAt(Math.floor(Math.random() * codeChrs.length));
+  }
+  // set test link
+  if (workerId != '') {
+    $(document).ready(function() {
+      $('#testLinkBody').html('<a class="dont-break-out" href="' + testUrl + '" id="testLink" target="_blank">CLICK HERE TO START THE TEST</a>');
+      setTimeout(function(){
+        $('#codeInstruction').html('Your test code is: <strong>' + codeText + '</strong><br>Please copy the code and paste into the box below. You will receive credit <strong>only after</strong> you complete the test from the link above.');
+        $('#codeInstruction').css('display', 'block');
+      }, showCodeAfter);
+    });
+  }
+</script><!-- Close internal javascript -->
