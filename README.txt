@@ -10,3 +10,5 @@ Until further notice, use "SurveyLink_Template_UseThisForNow.html" to avoid AMT 
 6) Delete all html code in the text box in the "(2) Design Layout" tab. Copy the code you edited in 5) and paste it to the text box.
 
  Ask Oakyoon, if you are not sure what to do.
+ 
+ Note that there are no images for this repository. Part of the AMT tips and tricks folder.
